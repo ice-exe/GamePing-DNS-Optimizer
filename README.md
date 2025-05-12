@@ -27,7 +27,7 @@ GamePing DNS Optimizer tests multiple popular DNS providers to determine which o
 1. Clone the repository or download the script:
 
 ```bash
-git clone https://github.com/ice-exe/gameping-dns-optimizer.git
+git clone https://github.com/ice-exe/GamePingDNS
 ```
 
 Alternatively, you can download the `dns_tester.py` file directly.
@@ -105,11 +105,3 @@ Created by [Ice](https://github.com/ice-exe)
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to submit pull requests or open issues on the GitHub repository.
-
-## 📈 Future Improvements
-
-- Support for DNS-over-HTTPS (DoH) testing
-- Geographic DNS server recommendations
-- Export results to CSV/JSON
-- System tray monitoring for DNS performance
-- Integration with popular gaming platforms
