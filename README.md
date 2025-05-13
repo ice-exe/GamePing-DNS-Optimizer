@@ -2,7 +2,7 @@
 
 A powerful DNS benchmarking tool tailored for gamers, built to analyze and recommend the fastest DNS servers for low-latency, high-reliability online gaming.
 
-![DNS Tester](https://github.com/ice-exe/gameping-dns-optimizer/raw/main/assets/banner.png)
+![DNS Tester](https://raw.githubusercontent.com/ice-exe/GamePingDNS/refs/heads/main/results.png)
 
 ## 🎮 Overview
 
