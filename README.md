@@ -1,102 +1,127 @@
 # 🚀 GamePing DNS Optimizer
 
-A powerful DNS testing tool designed specifically for gamers to find the fastest and most responsive DNS servers for optimal gaming performance.
+A powerful DNS benchmarking tool tailored for gamers, built to analyze and recommend the fastest DNS servers for low-latency, high-reliability online gaming.
 
-![[DNS Tester](https://github.com/ice-exe/gameping-dns-optimizer/raw/main/assets/banner.png)](https://raw.githubusercontent.com/ice-exe/GamePing-DNS-Optimizer/refs/heads/main/results.png)
+![DNS Tester](https://github.com/ice-exe/gameping-dns-optimizer/raw/main/assets/banner.png)
 
 ## 🎮 Overview
 
-GamePing DNS Optimizer tests multiple popular DNS providers to determine which ones offer the lowest latency, jitter, and packet loss - the key metrics that affect your gaming experience. The tool automatically ranks DNS servers based on their overall gaming performance score and recommends the best primary and secondary DNS configurations for your system.
+**GamePing DNS Optimizer** tests multiple DNS providers using real-world metrics that matter most for gaming: **latency**, **jitter**, and **packet loss**. It ranks them using a performance-based scoring system and recommends the best configuration for your system.
 
 ## ✨ Features
 
-- **Gaming-Optimized Metrics**: Measures latency, jitter, and packet loss - the metrics that matter most for gaming
-- **Comprehensive DNS Provider Testing**: Tests 14+ popular DNS providers including Google, Cloudflare, Quad9, OpenDNS, and more
-- **Automatic Ranking System**: Displays results sorted by a specialized gaming performance score
-- **Beautiful Console UI**: Rich, colorful terminal output with progress bars and formatted tables
-- **Cross-Platform Support**: Works on Windows, macOS, and Linux
+* 🎯 **Gaming-Optimized Metrics**: Evaluates latency, jitter, and packet loss
+* 🌐 **14+ Popular DNS Providers**: Includes Google, Cloudflare, Quad9, OpenDNS, AdGuard, and more
+* 📈 **Automatic Ranking**: Sorts servers by average response time and jitter
+* 🎨 **Rich Terminal UI**: Colorful, user-friendly output using the `rich` library
+* ⚙️ **Settings Menu**: Customize ping count, timeout, workers, and add custom DNS servers
+* 💻 **Cross-Platform**: Works on Windows, macOS, and Linux
 
 ## 📋 Requirements
 
-- Python 3.6+
-- Internet connection
-- `rich` library (automatically installed if missing)
+* Python 3.6+
+* Internet connection
+* `rich` Python library (auto-installed on first run)
 
 ## 🚀 Installation
 
-1. Clone the repository or download the script:
-
 ```bash
 git clone https://github.com/ice-exe/GamePingDNS
+cd GamePingDNS
 ```
 
-Alternatively, you can download the `dns_tester.py` file directly.
+Or download the standalone `GamePingDNS.py`.
 
-2. Make the script executable (Linux/macOS):
+## 🔧 Make Executable (Optional for Unix-like systems)
 
 ```bash
-chmod +x dns_tester.py
+chmod +x GamePingDNS.py
 ```
 
 ## 💻 Usage
 
-Run the script:
+Run the tool:
 
 ```bash
-python dns_tester.py
+python GamePingDNS.py
 ```
 
-The application will:
-1. Check for the `rich` library and install it if needed
-2. Prompt you for the number of pings per server (default: 10)
-3. Test all DNS servers in parallel
-4. Display results sorted by gaming performance
-5. Provide recommendations for primary and secondary DNS servers
+You'll be able to:
 
-## 📊 Understanding the Results
+1. Select between **DNS Test**, **Settings**, or **Exit**
+2. Configure ping parameters and custom servers via Settings
+3. View ranked DNS results in a table
+4. Get **Primary** and **Secondary** DNS recommendations
 
-The results are sorted by a "Gaming Score" which combines:
-- **Average Latency**: Lower is better (50% weight)
-- **Jitter**: Lower is better - measures consistency (30% weight)
-- **Packet Loss**: Lower is better - measures reliability (20% weight)
+## 📊 How It Works
 
-A lower overall score indicates better potential gaming performance.
+Each DNS server is tested with configurable pings, and scored based on:
 
-## 🔧 How to Change Your DNS Servers
+* 🕒 **Latency (50%)**: Average response time in milliseconds
+* 📉 **Jitter (30%)**: Consistency of response time
+* ❌ **Packet Loss (20%)**: Stability and reliability of connection
+
+Lower overall scores indicate better gaming DNS performance.
+
+## 🧩 DNS Configuration Help
 
 ### Windows
 
-1. Open Network and Sharing Center
-2. Click on your active connection
-3. Click Properties
-4. Select "Internet Protocol Version 4 (TCP/IPv4)"
-5. Click Properties
-6. Select "Use the following DNS server addresses"
-7. Enter the recommended DNS servers
-8. Click OK
+1. Go to *Control Panel → Network and Sharing Center*
+2. Click your active connection → *Properties*
+3. Double-click *Internet Protocol Version 4 (TCP/IPv4)*
+4. Choose *Use the following DNS server addresses*
+5. Enter the suggested Primary and Secondary DNS
+6. Click OK
 
 ### macOS
 
-1. Open System Preferences
-2. Click Network
-3. Select your active connection
-4. Click Advanced
-5. Go to DNS tab
-6. Click "+" to add DNS servers
-7. Enter the recommended DNS servers
-8. Click OK, then Apply
+1. Open *System Preferences → Network*
+2. Select your active connection → *Advanced → DNS*
+3. Add new DNS servers with the "+" button
+4. Click OK, then Apply
 
 ### Linux
 
-The method varies by distribution. Generally:
+Edit `/etc/resolv.conf` or use your Network Manager:
 
-1. Edit `/etc/resolv.conf` or use NetworkManager
-2. Add `nameserver x.x.x.x` for each recommended DNS server
-3. Save and restart networking service
+```bash
+sudo nano /etc/resolv.conf
+# Add:
+nameserver x.x.x.x
+nameserver y.y.y.y
+```
+
+## 🔄 Settings Overview
+
+Accessible via the menu:
+
+* Ping Count
+* Timeout per ping
+* Number of parallel workers
+* Show all or only top servers
+* Manage custom DNS servers
+* Reset to defaults
+
+Settings are saved to `~/.gamepingdns_settings.json`.
+
+## 🛠 Example Output
+
+```text
+Rank | Provider        | IP Address     | Avg (ms) | Min | Max | Jitter | Loss
+-------------------------------------------------------------------------------
+1    | Cloudflare      | 1.1.1.1        | 8.24     | 7.9 | 9.1 | 1.2    | 0.0%
+2    | Google Primary  | 8.8.8.8        | 10.87    | 9.2 | 12.5| 2.3    | 0.0%
+```
+
+✅ **Recommended DNS Configuration for Gaming**:
+
+* Primary DNS: 1.1.1.1 (Cloudflare)
+* Secondary DNS: 8.8.8.8 (Google)
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the comment section at the top of the script for details.
+Licensed under the MIT License. See source code header for details.
 
 ## 👨‍💻 Author
 
@@ -104,4 +129,4 @@ Created by [Ice](https://github.com/ice-exe)
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to submit pull requests or open issues on the GitHub repository.
+Issues, suggestions, and pull requests are welcome on the GitHub repo!
